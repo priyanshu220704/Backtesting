@@ -23,11 +23,7 @@ public class SimpleMovingAverage {
 
         // Generate buy and sell signals based on crossovers
         List<Boolean> signals = generateSignals(smaShort, smaLong);
-
-        // Calculate daily returns (log returns)
         List<BigDecimal> returns = calculateReturns(stockDataList);
-
-        // Implement the strategy and calculate performance
         List<BigDecimal> strategyReturns = applyStrategy(returns, signals);
 
         // Calculate performance metrics
@@ -66,7 +62,7 @@ public class SimpleMovingAverage {
         return stockDataList;
     }
 
-    // Helper method to safely parse BigDecimal and handle invalid values
+    // method to safely parse BigDecimal and handle invalid values
     public static BigDecimal parseBigDecimal(String value) {
         try {
             return new BigDecimal(value);
@@ -75,7 +71,7 @@ public class SimpleMovingAverage {
         }
     }
 
-    // Method to calculate the moving average for a given window size
+    // calculate the moving average for a given window size
     public static List<BigDecimal> calculateMovingAverage(List<StockData> stockData, int window) {
         List<BigDecimal> movingAverages = new ArrayList<>();
         for (int i = window - 1; i < stockData.size(); i++) {
@@ -88,7 +84,7 @@ public class SimpleMovingAverage {
         return movingAverages;
     }
 
-    // Method to generate buy/sell signals based on crossovers
+    // generate buy/sell signals based on crossovers
     public static List<Boolean> generateSignals(List<BigDecimal> smaShort, List<BigDecimal> smaLong) {
         List<Boolean> signals = new ArrayList<>();
         for (int i = 0; i < smaShort.size(); i++) {
@@ -97,7 +93,7 @@ public class SimpleMovingAverage {
         return signals;
     }
 
-    // Method to calculate daily log returns
+    // calculate daily log returns
     public static List<BigDecimal> calculateReturns(List<StockData> stockData) {
         List<BigDecimal> returns = new ArrayList<>();
         for (int i = 1; i < stockData.size(); i++) {
@@ -108,7 +104,7 @@ public class SimpleMovingAverage {
         return returns;
     }
 
-    // Method to apply the strategy based on signals
+    // strategy based on signals
     public static List<BigDecimal> applyStrategy(List<BigDecimal> returns, List<Boolean> signals) {
         List<BigDecimal> strategyReturns = new ArrayList<>();
         for (int i = 0; i < signals.size(); i++) {
@@ -130,7 +126,7 @@ public class SimpleMovingAverage {
         return cumulative;
     }
 
-    // Method to calculate average return (annualized)
+    // average return (annualized)
     public static BigDecimal calculateAverageReturn(List<BigDecimal> strategyReturns) {
         BigDecimal sum = BigDecimal.ZERO;
         for (BigDecimal dailyReturn : strategyReturns) {
@@ -139,7 +135,7 @@ public class SimpleMovingAverage {
         return sum.divide(BigDecimal.valueOf(strategyReturns.size()), RoundingMode.HALF_UP);
     }
 
-    // Method to calculate volatility (annualized)
+    // calculate volatility (annualized)
     public static BigDecimal calculateVolatility(List<BigDecimal> strategyReturns) {
         BigDecimal mean = calculateAverageReturn(strategyReturns);
         BigDecimal sumOfSquares = BigDecimal.ZERO;
@@ -150,12 +146,12 @@ public class SimpleMovingAverage {
         return variance.sqrt(new MathContext(5));
     }
 
-    // Method to calculate Sharpe ratio
+    // Sharpe ratio
     public static BigDecimal calculateSharpeRatio(BigDecimal averageReturn, BigDecimal volatility) {
         return averageReturn.divide(volatility, RoundingMode.HALF_UP);
     }
 
-    // Method to calculate maximum drawdown
+    // maximum drawdown
     public static BigDecimal calculateMaxDrawdown(BigDecimal cumulativeReturns) {
         return cumulativeReturns.negate();
     }
