@@ -1,5 +1,9 @@
 # Backtesting
 
+I have done it in a java file. I have also included a python file for better visualization.
+For running the java file :
+Run the Script.py and then the main files.
+
 1. Timeline Selection
 To ensure a stable market analysis, the timeline chosen was 2010 to 2018. This excluded periods of significant market turmoil, such as the 2008 financial crisis and the 2020 COVID-19 pandemic.
 
@@ -16,7 +20,7 @@ Strategy Performance
 
 4. The strategy showed its most significant performance during late 2017 to 2018, while the other periods yielded less remarkable results.
    
-5. Fine-tuning the parameters by switching from Simple Moving Averages (SMA) to Exponential Moving Weighted Averages (EMWA), and setting the short and long periods to 20 and 100, respectively, improved the Sharpe Ratio by an average of 15%.
+5. Fine-tuning the parameters by switching from Simple Moving Averages (SMA) to Exponential Moving Weighted Averages (EMWA), and setting the short and long periods to 20 and 100, respectively, improved the Sharpe Ratio.
 Risk Metrics
 
 6. There was a notable reduction in maximum drawdown across all stocks, indicating better risk management and lower potential losses during downturns.
